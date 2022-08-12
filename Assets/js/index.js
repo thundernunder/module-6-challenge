@@ -3,7 +3,6 @@ var key = api.key;
 console.log(key);
 
 
-
 function getWeather() {
   var city = userInput.val();
   fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + api.key)
@@ -20,20 +19,23 @@ function getWeather() {
     wind.text(data.list[0].wind.speed);
     var humidity = $('#humidity');
     humidity.text(data.list[0].main.humidity);
-    
+      
+    localStorage.setItem('city', city); 
+
   });
+  makeHistoryButton();
 }
 
-// getWeather();
+function makeHistoryButton() {
+  
+  var rootEl = $('#top-panel');
+  var historyButton = $('<button>');
+  rootEl.append(historyButton);
+  historyButton.text(localStorage.getItem('city'));
+
+}
+
+
 
 cityButton = $("#submitButton");
 cityButton.on('click', getWeather);
-
-// function getWeather() {
-//   var city = userInput.val();
-//   fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + api.key)
-//   .then((response) => response.json())
-//   .then((data) => console.log(data));
-//   // var temp = $('#city-name');
-//   // temp.textContent = forecast.main.city.name;
-// }
