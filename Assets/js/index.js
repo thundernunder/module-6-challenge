@@ -20,8 +20,7 @@ function getWeather() {
     wind.text(data.list[0].wind.speed);
     var humidity = $('#humidity');
     humidity.text(data.list[0].main.humidity);
-    
-  // localStorage.setItem('city', city); 
+     
   });
   makeHistoryButton();
 }
@@ -33,13 +32,9 @@ function makeHistoryButton() {
   historyButton.attr('id', userInput.val());
   rootEl.append(historyButton);
   historyButton.text(userInput.val());
+  
   localStorage.setItem('city: ' + userInput.val(), userInput.val());
-
-  // var storageCity = localStorage.getItem('searchHistory');
-  // storageCity = storageCity ? JSON.parse(storageCity) : {};
-  // storageCity['city: ' + userInput.val()] = userInput.val();
-  // localStorage.setItem('searchHistory', JSON.stringify(storageCity));
-
+  
 }
 
 function weatherSearchButton() {
@@ -62,21 +57,11 @@ function weatherSearchButton() {
 
   }));
 
-  }
-    
-
-
-// $('#city').val(localStorage.getItem('city'));
-
-function init() {
-  if (localStorage.getItem(null)) {
-    return;
-  } else {
-    for (i=0; i < localStorage.getItem('searchHistory').length; i++) {
-      makeHistoryButton();
-    }
-  }
 }
+
+
+
+
 
 var cityButton = $("#submitButton");
 cityButton.on('click', getWeather);
