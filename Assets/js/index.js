@@ -21,7 +21,7 @@ function getWeather() {
     var humidity = $('#humidity');
     humidity.text(data.list[0].main.humidity);
     
-  localStorage.setItem('city', city); 
+  // localStorage.setItem('city', city); 
   });
   makeHistoryButton();
 }
@@ -32,6 +32,7 @@ function makeHistoryButton() {
   historyButton.attr('id', userInput.val());
   rootEl.append(historyButton);
   historyButton.text(userInput.val());
+  localStorage.setItem(userInput.val(), userInput.val());
 
   // for (i=0; i <= ".button".length; i++) {
 
