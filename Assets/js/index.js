@@ -32,7 +32,7 @@ function getWeather(city) {
   
 }
 
-function makeHistoryButton(resultCity) {
+function makeHistoryButton() {
   var rootEl = $('#search-buttons');
   var historyButton = $('<button>');
   historyButton.attr('class', 'dynamicButton');
@@ -42,34 +42,34 @@ function makeHistoryButton(resultCity) {
   
 }
 
-var searchArea = $('#search-buttons');
-searchArea.on('click', function() {
-  var cities = localStorage.getItem('cities');
-  console.log(cities);
-  for (i=0; i <= cities.length; i++) {
-  }
-})
+// var searchButtonsEl = $('button');
 
 
+// searchButtonsEl.on('click', function() {
+//   var cities = localStorage.getItem('cities');
+//   console.log(cities);
+//   for (i=0; i <= searchButtonsEl.length; i++) {
+//     var singleButton = searchButtonsEl[i];
+//     // var buttonId = singleButton.getAttribute('id');
 
-  //   fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + buttonId + "&units=imperial&appid=" + api.key)
-  //   .then(function(response) {
-  //     return response.json();
-  //   })
-  //   .then(function(data) {
-  //     console.log(data);
-  //     var location2 = $('#city-name2');
-  //     location2.text(data.city.name);
-  //     var temp2 = $('#temperature2');
-  //     temp2.text(data.list[0].main.temp);
-  //     var wind2 = $('#wind2');
-  //     wind2.text(data.list[0].wind.speed);
-  //     var humidity2 = $('#humidity2');
-  //     humidity2.text(data.list[0].main.humidity);
-  // });
-
-
-
+//     if (cities.includes(buttonId)) {
+//       fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${buttonId}&units=imperial&appid=${api.key}`)
+//       .then(function(response) {
+//         return response.json();
+//       })
+//       .then(function(data) {
+//         console.log(data);
+//         var location2 = $('#city-name2');
+//         location2.text(data.city.name);
+//         var temp2 = $('#temperature2');
+//         temp2.text(data.list[0].main.temp);
+//         var wind2 = $('#wind2');
+//         wind2.text(data.list[0].wind.speed);
+//         var humidity2 = $('#humidity2');
+//         humidity2.text(data.list[0].main.humidity);
+//     });
+//   }
+// }});
 
 
 var cityButton = $("#submitButton");
