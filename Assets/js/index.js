@@ -23,22 +23,23 @@ function getWeather() {
     
   localStorage.setItem('city', city); 
   });
-  localStorage.setItem('city', city);
   makeHistoryButton();
 }
 
 function makeHistoryButton() {
   var rootEl = $('#search-buttons');
   var historyButton = $('<button>');
-  historyButton.addClass('button');
+  historyButton.attr('id', userInput.val());
   rootEl.append(historyButton);
-  historyButton.text(localStorage.getItem('city'));
+  historyButton.text(userInput.val());
 
   // for (i=0; i <= ".button".length; i++) {
 
   // }
 
 }
+
+// $('#city').val(localStorage.getItem('city'));
 
 
 
