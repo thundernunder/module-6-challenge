@@ -42,34 +42,34 @@ function makeHistoryButton() {
   
 }
 
-// var searchButtonsEl = $('button');
+var searchButtonsEl = $('button');
 
 
-// searchButtonsEl.on('click', function() {
-//   var cities = localStorage.getItem('cities');
-//   console.log(cities);
-//   for (i=0; i <= searchButtonsEl.length; i++) {
-//     var singleButton = searchButtonsEl[i];
-//     // var buttonId = singleButton.getAttribute('id');
+searchButtonsEl.on('click', function() {
+  var cities = localStorage.getItem('cities');
+  console.log(cities);
+  for (i=0; i <= searchButtonsEl.length; i++) {
+    var singleButton = searchButtonsEl[i];
+    // var buttonId = singleButton.getAttribute('id');
 
-//     if (cities.includes(buttonId)) {
-//       fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${buttonId}&units=imperial&appid=${api.key}`)
-//       .then(function(response) {
-//         return response.json();
-//       })
-//       .then(function(data) {
-//         console.log(data);
-//         var location2 = $('#city-name2');
-//         location2.text(data.city.name);
-//         var temp2 = $('#temperature2');
-//         temp2.text(data.list[0].main.temp);
-//         var wind2 = $('#wind2');
-//         wind2.text(data.list[0].wind.speed);
-//         var humidity2 = $('#humidity2');
-//         humidity2.text(data.list[0].main.humidity);
-//     });
-//   }
-// }});
+    if (cities.includes(buttonId)) {
+      fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${buttonId}&units=imperial&appid=${api.key}`)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        console.log(data);
+       var location = $('#city-name');
+          location.text(data.city.name);
+          var temp = $('#temperature');
+          temp.text(data.list[0].main.temp);
+          var wind = $('#wind');
+          wind.text(data.list[0].wind.speed);
+          var humidity = $('#humidity');
+          humidity.text(data.list[0].main.humidity);
+    });
+  }
+}});
 
 
 var cityButton = $("#submitButton");
