@@ -6,6 +6,7 @@ var buttonEl = $('button');
 
 function getWeather() {
   var city = userInput.val();
+  
 
   fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + api.key)
   .then(function(response) {
@@ -22,57 +23,40 @@ function getWeather() {
     var humidity = $('#humidity');
     humidity.text(data.list[0].main.humidity);
 
-    for (i=0; i < 6; i++) {
-      var fiveDay = $('#forecast');
-      var cardDiv = $('<div>');
+    var cityName = data.city.name;
+    console.log(cityName);
 
-      var cardDate = $('<h3>');
-      cardDate.text(data.list[i].dt_txt);
-      
-      var cardTemp = $('<p>');
-      cardTemp.text("Temp: " + data.list[i].main.temp);
-      
-      var cardWind = $('<p>');
-      cardWind.text("Wind: " + data.list[i].wind.speed + " MPH");
+    var fiveDayQuery = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + api.key;
 
-      var cardHumidity = $('<p>');
-      cardHumidity.text('Humidity ' + data.list[i].main.humidity);
+    fetch(fiveDayQuery, {})
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      console.log(data);
 
-      fiveDay.append(cardDiv[i]);
-      cardDiv.append(cardDate[i]);
-      cardDiv.append(cardTemp[i]);
-      cardDiv.append(cardWind[i]);
-      cardDiv.append(cardHumidity[i]);
+    for (i=0; i < 39; i += 8) {
+      var weatherSection = $('#forecast');
+      var weatherCard = document.createElement('div');
+      var cardHeading = document.createElement('h3');
+      var cardTemp = document.createElement('p');
+      var cardWind = document.createElement('p');
+      var cardHumidity = document.createElement('p');
+
+      cardHeading.textContent = data.list[i].main.temp;
+
+      weatherSection.append(weatherCard);
+      weatherCard.append(cardHeading);
     }
-
-    var fiveDay = $('#forecast');
-    var cardDiv = $('<div>');
-
-    var cardDate = $('<h3>');
-    cardDate.text(data.list[1].dt_txt);
-    
-    var cardTemp = $('<p>');
-    cardTemp.text("Temp: " + data.list[1].main.temp);
-    
-    var cardWind = $('<p>');
-    cardWind.text("Wind: " + data.list[1].wind.speed + " MPH");
-
-    var cardHumidity = $('<p>');
-    cardHumidity.text('Humidity ' + data.list[1].main.humidity);
-
-    fiveDay.append(cardDiv);
-    cardDiv.append(cardDate);
-    cardDiv.append(cardTemp);
-    cardDiv.append(cardWind);
-    cardDiv.append(cardHumidity);
+  });
+  });
 
 
     searchHistory.push(userInput.val());
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory))
     console.log(searchHistory);
     makeHistoryButton();
-  }); 
-};
+}; 
 
 function makeHistoryButton() {
   var rootEl = $('#search-buttons');
