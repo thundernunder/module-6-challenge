@@ -1,4 +1,5 @@
 var userInput = $("#input-text");
+var apiKEY = 'f4ac895478946fb295776c00914a0c9e'
 var key = api.key;
 var searchHistory = [];
 var buttonEl = $('button');
