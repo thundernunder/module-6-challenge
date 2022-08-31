@@ -1,6 +1,5 @@
 var userInput = $("#input-text");
 var apiKEY = 'f4ac895478946fb295776c00914a0c9e'
-var key = api.key;
 var searchHistory = [];
 var buttonEl = $('button');
 
@@ -9,7 +8,7 @@ function getWeather() {
   var city = userInput.val();
   
 
-  fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + api.key)
+  fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKEY)
   .then(function(response) {
     return response.json();
   })
@@ -27,7 +26,7 @@ function getWeather() {
     var cityName = data.city.name;
     console.log(cityName);
 
-    var fiveDayQuery = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + api.key;
+    var fiveDayQuery = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + apiKEY;
 
     fetch(fiveDayQuery, {})
     .then(function(response) {
@@ -58,7 +57,7 @@ function getWeather() {
   };
   var cityLat = data.city.coord.lat;
       var cityLon = data.city.coord.lon;
-      var uvURl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + cityLat + "&lon=" + cityLon + "&appid=" + api.key;
+      var uvURl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + cityLat + "&lon=" + cityLon + "&appid=" + apiKEY;
 
     fetch(uvURl, {})
     .then(function(response) {
@@ -101,7 +100,7 @@ function makeHistoryButton() {
 $('#search-buttons').on('click', '.dynamicButton',function(){
   var city = $(this).attr("id")
   console.log(city);
-  fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + api.key)
+  fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKEY)
   .then(function(response) {
     return response.json();
   })
@@ -119,7 +118,7 @@ $('#search-buttons').on('click', '.dynamicButton',function(){
     var cityName = data.city.name;
     console.log(cityName);
 
-    var fiveDayQuery = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + api.key;
+    var fiveDayQuery = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + apiKEY;
 
     fetch(fiveDayQuery, {})
     .then(function(response) {
@@ -149,7 +148,7 @@ $('#search-buttons').on('click', '.dynamicButton',function(){
     }});
     var cityLat = data.city.coord.lat;
       var cityLon = data.city.coord.lon;
-      var uvURl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + cityLat + "&lon=" + cityLon + "&appid=" + api.key;
+      var uvURl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + cityLat + "&lon=" + cityLon + "&appid=" + apiKEY;
 
     fetch(uvURl, {})
     .then(function(response) {
