@@ -1,4 +1,4 @@
-👦 Nathan Underwood - Module 5 Challenge
+👦 Nathan Underwood - Module 6 Challenge
 
 This Challenge gives me the opportunity to create a weather app using dynamic html, css, and javascript.
 
