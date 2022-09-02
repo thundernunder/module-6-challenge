@@ -8,7 +8,7 @@ function getWeather() {
   var city = userInput.val();
   
 
-  fetch("http://www.api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKEY)
+  fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKEY)
   .then(function(response) {
     return response.json();
   })
@@ -26,7 +26,7 @@ function getWeather() {
     var cityName = data.city.name;
     console.log(cityName);
 
-    var fiveDayQuery = "http://www.api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + apiKEY;
+    var fiveDayQuery = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + apiKEY;
 
     fetch(fiveDayQuery, {})
     .then(function(response) {
@@ -57,7 +57,7 @@ function getWeather() {
   };
   var cityLat = data.city.coord.lat;
       var cityLon = data.city.coord.lon;
-      var uvURl = "http://www.api.openweathermap.org/data/2.5/uvi?lat=" + cityLat + "&lon=" + cityLon + "&appid=" + apiKEY;
+      var uvURl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + cityLat + "&lon=" + cityLon + "&appid=" + apiKEY;
 
     fetch(uvURl, {})
     .then(function(response) {
@@ -100,7 +100,7 @@ function makeHistoryButton() {
 $('#search-buttons').on('click', '.dynamicButton',function(){
   var city = $(this).attr("id")
   console.log(city);
-  fetch("http://www.api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKEY)
+  fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKEY)
   .then(function(response) {
     return response.json();
   })
@@ -118,7 +118,7 @@ $('#search-buttons').on('click', '.dynamicButton',function(){
     var cityName = data.city.name;
     console.log(cityName);
 
-    var fiveDayQuery = "http://www.api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + apiKEY;
+    var fiveDayQuery = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + apiKEY;
 
     fetch(fiveDayQuery, {})
     .then(function(response) {
@@ -148,7 +148,7 @@ $('#search-buttons').on('click', '.dynamicButton',function(){
     }});
     var cityLat = data.city.coord.lat;
       var cityLon = data.city.coord.lon;
-      var uvURl = "http://www.api.openweathermap.org/data/2.5/uvi?lat=" + cityLat + "&lon=" + cityLon + "&appid=" + apiKEY;
+      var uvURl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + cityLat + "&lon=" + cityLon + "&appid=" + apiKEY;
 
     fetch(uvURl, {})
     .then(function(response) {
